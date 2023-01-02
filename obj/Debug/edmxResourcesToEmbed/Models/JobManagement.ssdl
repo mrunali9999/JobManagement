@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JobManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JobOpening">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+    <Property Name="Title" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+    <Property Name="LocationId" Type="int" />
+    <Property Name="DepartmentId" Type="int" />
+    <Property Name="PostedDate" Type="datetime" Nullable="false" />
+    <Property Name="ClosingDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="150" />
+    <Property Name="State" Type="varchar" MaxLength="150" />
+    <Property Name="Country" Type="varchar" MaxLength="150" />
+    <Property Name="ZipCode" Type="int" />
+  </EntityType>
+  <EntityContainer Name="JobManagementModelStoreContainer">
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobOpening" EntityType="Self.JobOpening" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
